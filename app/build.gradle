@@ -47,6 +47,22 @@ android {
 }
 
 dependencies {
+    // region ArrowKt (Functional Programming)
+    implementation platform("io.arrow-kt:arrow-stack:1.0.1")
+    implementation "io.arrow-kt:arrow-core"
+    // endregion
+
+    // region Ktor Http Client
+    var ktor = "2.0.3"
+    implementation "io.ktor:ktor-client-core:$ktor"
+    implementation "io.ktor:ktor-client-okhttp:$ktor"
+    implementation "io.ktor:ktor-client-logging:$ktor"
+    implementation "io.ktor:ktor-client-content-negotiation:$ktor"
+    implementation "io.ktor:ktor-serialization-gson:$ktor"
+    implementation "com.google.code.gson:gson:2.9.0"
+    // endregion
+
+
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
