@@ -13,14 +13,16 @@ import com.flawlessrequests.network.Operation
 import com.flawlessrequests.network.OperationFlow
 import com.flawlessrequests.network.httpRequest
 import com.google.gson.annotations.SerializedName
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.ktor.client.*
 import io.ktor.client.request.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-object PeopleError
 
+object PeopleError // Domain error
 data class Person(
+    // Domain type
     val names: String,
     val age: Int,
 )
@@ -58,6 +60,7 @@ class PeopleRequest @Inject constructor(
         }
 }
 
+@HiltViewModel
 class PeopleViewModel @Inject constructor(
     private val peopleRequest: PeopleRequest
 ) : ViewModel() {
