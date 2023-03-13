@@ -3,7 +3,7 @@ package com.flawlessrequests.network
 /**
  * Defines a potentially long-running operation that:
  * 1) Must have a [Operation.Loading] state
- * 2) Results either in [Operation.Ok] or [Operation.Error]
+ * 2) Results in either [Operation.Ok] or [Operation.Error]
  *
  * _Example: A good use-case for an [Operation] is sending HTTP requests to a server._
  */
@@ -25,9 +25,9 @@ sealed interface Operation<out Err, out Data> {
 }
 
 /**
- * Transforms [Operation.Ok] case using the [transform] lambda.
- * Note: [Operation.Loading] and [Operation.Error] remain unchanged.
- * @param transform transformation (mapping) function for the [Operation.Ok]'s data.
+ * Transforms the [Operation.Ok] case using the [transform] lambda.
+ * [Operation.Loading] and [Operation.Error] remain unchanged.
+ * @param transform transformation (mapping) function for the [Operation.Ok]'s case.
  * @return a new [Operation] with transformed [Operation.Ok] case.
  */
 fun <E, D1, D2> Operation<E, D1>.mapSuccess(
@@ -41,9 +41,9 @@ fun <E, D1, D2> Operation<E, D1>.mapSuccess(
 }
 
 /**
- * Transforms [Operation.Error] case using the [transform] lambda.
- * Note: [Operation.Loading] and [Operation.Ok] remain unchanged.
- * @param transform transformation (mapping) function for the [Operation.Error]'s error.
+ * Transforms the [Operation.Error] case using the [transform] lambda.
+ * [Operation.Loading] and [Operation.Ok] remain unchanged.
+ * @param transform transformation (mapping) function for the [Operation.Error]'s case.
  * @return a new [Operation] with transformed [Operation.Error] case.
  */
 fun <E, E2, D> Operation<E, D>.mapError(
