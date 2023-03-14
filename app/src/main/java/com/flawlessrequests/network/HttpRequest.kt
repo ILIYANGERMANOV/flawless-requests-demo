@@ -20,7 +20,7 @@ suspend inline fun <reified Data> httpRequest(
     try {
         val response = request(ktorClient)
         if (response.status.isSuccess()) {
-            // Success: 200 >= status code >= 299.
+            // Success: 200 <= status code <= 299.
             Either.Right(response.body())
         } else {
             // Failure: unsuccessful status code.
